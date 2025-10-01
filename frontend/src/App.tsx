@@ -5,7 +5,7 @@ type Task = {
   text: string
 }
 
-function App() {
+export function App() {
   const [tasks, setTasks] = useState<Task[]>([])
 
   const [newTaskText, setNewTaskText] = useState("")
@@ -58,5 +58,3 @@ function App() {
     </>
   )
 }
-
-export default App
