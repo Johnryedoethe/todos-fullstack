@@ -5,7 +5,7 @@ type Task = {
   text: string
 }
 
-export function App() {
+export function Todos() {
   const [tasks, setTasks] = useState<Task[]>([])
 
   const [newTaskText, setNewTaskText] = useState("")
