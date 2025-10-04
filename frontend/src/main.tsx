@@ -1,14 +1,17 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
-import { Todos } from './Todos'
-
-import { Hello, ListExample } from './Hello'
-
 import { Counter } from './Counter'
+import { Fetch } from './Fetch'
+import { Hello, ListExample } from './Hello'
+import { Todos } from './Todos'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+    <Fetch />
+
+    <hr />
+
     <Counter />
 
     <hr />
