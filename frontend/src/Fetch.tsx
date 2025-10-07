@@ -19,7 +19,7 @@ export function Fetch() {
   return (
     <>
       <div>Fetch Component</div>
-      <input type="text" value={targetName} onChange={((e) => setTargetName(e.target.value))}></input>
+      <input type="text" value={targetName} onChange={((e) => setTargetName(e.target.value))} placeholder="enter a name..."></input>
       <button onClick={fetchData}>Fetch</button>
 
       {name !== "" && (
