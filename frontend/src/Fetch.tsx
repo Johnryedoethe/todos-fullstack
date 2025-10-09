@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export function Fetch() {
   const [targetName, setTargetName] = useState("")
@@ -8,7 +8,7 @@ export function Fetch() {
   const [age, setAge] = useState(0)
   const [count, setCount] = useState(0)
 
-  async function fetchData() {
+  useEffect(() => {
     const name = targetName.trim()
     if (name === "") {
       setErrorMsg("Please enter a name")
@@ -16,21 +16,24 @@ export function Fetch() {
     }
 
     setErrorMsg("")
-
-    const res = await fetch(`https://api.agify.io/?name=${name}`)
-    if (res.ok) {
-      const data = await res.json()
-      if (data.age) {
-        setName(data.name)
-        setAge(data.age)
-        setCount(data.count)
+    const FetchData = async () => {
+      const res = await fetch(`https://api.agify.io/?name=${name}`)
+      if (res.ok) {
+        const data = await res.json()
+        if (data.age) {
+          setName(data.name)
+          setAge(data.age)
+          setCount(data.count)
+        } else {
+          setErrorMsg("User not found")
+        }
       } else {
-        setErrorMsg("User not found")
+        setErrorMsg("Error fetching data: " + await res.text())
       }
-    } else {
-      setErrorMsg("Error fetching data: " + await res.text())
     }
-  }
+    FetchData()
+  }, [targetName])
+
 
   const updateEditName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTargetName(e.target.value)
@@ -47,12 +50,12 @@ export function Fetch() {
         placeholder="enter a name..."
       />
 
-      <button
+      {/* <button
         onClick={fetchData}
         disabled={targetName === ""}
-      >
-        Fetch
-      </button>
+      > */}
+        {/* Fetch */}
+      {/* </button> */}
 
       {errorMsg !== "" && <p style={{ color: "red" }}>{errorMsg}</p>}
 
