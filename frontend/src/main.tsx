@@ -4,10 +4,15 @@ import { createRoot } from 'react-dom/client'
 import { Counter } from './Counter'
 import { Fetch } from './Fetch'
 import { Hello, ListExample } from './Hello'
+import { NamedFetchWrapper } from './NamedFetchWrapper'
 import { Todos } from './Todos'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+    <NamedFetchWrapper />
+
+    <hr />
+
     <Fetch />
 
     <hr />
