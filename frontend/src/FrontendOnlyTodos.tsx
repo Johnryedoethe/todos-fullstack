@@ -5,7 +5,7 @@ type Task = {
   text: string
 }
 
-export function Todos() {
+export function FrontendOnlyTodos() {
   const [tasks, setTasks] = useState<Task[]>([])
 
   const [newTaskText, setNewTaskText] = useState("")

@@ -5,7 +5,7 @@ import { Counter } from './Counter'
 import { Fetch } from './Fetch'
 import { Hello, ListExample } from './Hello'
 import { NamedFetchWrapper } from './NamedFetchWrapper'
-import { Todos } from './Todos'
+import { FrontendOnlyTodos } from './FrontendOnlyTodos'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -30,6 +30,6 @@ createRoot(document.getElementById('root')!).render(
 
     <hr />
 
-    <Todos />
+    <FrontendOnlyTodos />
   </StrictMode>,
 )
