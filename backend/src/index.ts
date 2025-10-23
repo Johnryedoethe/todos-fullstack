@@ -10,7 +10,7 @@ app.use(express.json());
 let tasks: Task[] = [];
 
 // Create: POST /tasks
-app.post('/tasks', (req: Request, res: Response) => {
+app.post('/api/tasks', (req: Request, res: Response) => {
     const { text } = req.body;
 
     if (!text) {
@@ -27,7 +27,7 @@ app.post('/tasks', (req: Request, res: Response) => {
 });
 
 // Read: GET /tasks
-app.get('/tasks', (_: Request, res: Response) => {
+app.get('/api/tasks', (_: Request, res: Response) => {
     res.json(tasks);
 });
 
@@ -51,7 +51,7 @@ app.put('/tasks/:id', (req: Request, res: Response) => {
 });
 
 // Delete: DELETE /tasks/:id
-app.delete('/tasks/:id', (req: Request, res: Response) => {
+app.delete('/api/tasks/:id', (req: Request, res: Response) => {
     const { id } = req.params;
     const taskIndex = tasks.findIndex((task: Task) => task.id === id);
 
