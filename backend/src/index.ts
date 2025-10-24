@@ -9,7 +9,6 @@ app.use(express.json());
 // In-memory storage for tasks
 let tasks: Task[] = [];
 
-// Create: POST /tasks
 app.post('/api/tasks', (req: Request, res: Response) => {
     const { text } = req.body;
 
@@ -23,16 +22,14 @@ app.post('/api/tasks', (req: Request, res: Response) => {
     };
 
     tasks.push(newTask);
-    res.status(201).json(newTask);
+    res.status(201).json({id: newTask.id});
 });
 
-// Read: GET /tasks
 app.get('/api/tasks', (_: Request, res: Response) => {
     res.json(tasks);
 });
 
-// Update: PUT /tasks/:id
-app.put('/tasks/:id', (req: Request, res: Response) => {
+app.patch('/api/tasks/:id', (req: Request, res: Response) => {
     const { id } = req.params;
     const { text } = req.body;
 
@@ -41,7 +38,6 @@ app.put('/tasks/:id', (req: Request, res: Response) => {
     }
 
     const taskIndex = tasks.findIndex((task: Task) => task.id === id);
-
     if (taskIndex === -1) {
         return res.status(404).json({ error: 'Task not found' });
     }
@@ -50,7 +46,6 @@ app.put('/tasks/:id', (req: Request, res: Response) => {
     res.json(tasks[taskIndex]);
 });
 
-// Delete: DELETE /tasks/:id
 app.delete('/api/tasks/:id', (req: Request, res: Response) => {
     const { id } = req.params;
     const taskIndex = tasks.findIndex((task: Task) => task.id === id);
