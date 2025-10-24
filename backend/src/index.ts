@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { Task } from './types';
 
 const app = express();
+
+// Requests need to set header Content-Type: application/json
 app.use(express.json());
 
 // In-memory storage for tasks
