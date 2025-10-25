@@ -1,12 +1,15 @@
 import express, { Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 
-import { Task } from './types';
-
 const app = express();
 
 // Requests need to set header Content-Type: application/json
 app.use(express.json());
+
+interface Task {
+    id: string;
+    text: string;
+}
 
 // In-memory storage for tasks
 let tasks: Task[] = [];
