@@ -1,9 +1,11 @@
 import express, { Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 
+// Create API web server
 const app = express();
 
-// Requests need to set header Content-Type: application/json
+// Add middleware to parse JSON in the request body;
+// requests need to set header Content-Type: application/json
 app.use(express.json());
 
 interface Task {
